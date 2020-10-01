@@ -1,10 +1,14 @@
 <?php 
 $amount = filter_input(INPUT_POST, 'amount');
+$final = 0 ;
+define('EUR_CZK', 27);
 define('GBP_CZK', 30);
 define('USD_CZK', 23);
-define('EUR_CZK', 27);
 $sub = filter_input(INPUT_POST, 'odeslat');
 $switch =  filter_input(INPUT_POST, 'switch');
+$curencyfrom;
+$curencyto;
+$text = "Výpočet byl proveden " ;
 ?>
 
 <!DOCTYPE html>
@@ -21,36 +25,45 @@ $switch =  filter_input(INPUT_POST, 'switch');
 if (isset($sub)) {
 
     switch ($switch) {
-    case 'czk_eur': ?>
-        <?= $amount ?> Kč je <?= $amount / EUR_CZK ?> Eur.
-        <?php
+    case 'czk_eur': 
+        $final = $amount / EUR_CZK ;
+        $curencyfrom = " CZK " ;
+        $curencyto = " EUR " ;
         break;
 
-    case 'eur_czk': ?>
-        <?= $amount ?> Eur je <?= $amount * EUR_CZK ?> Kč.
-        <?php
+    case 'eur_czk': 
+        $final = $amount * EUR_CZK ;
+        $curencyfrom = " EUR " ;
+        $curencyto = " CZK " ;
         break;
         
-    case 'czk_gbp': ?>
-        <?= $amount ?> Kč je <?= $amount / GBP_CZK ?> Liber.
-        <?php
+    case 'czk_gbp': 
+        $final = $amount / GBP_CZK ;
+        $curencyfrom = " CZK " ;
+        $curencyto = " GBP " ;
         break;
     
-    case 'gpb_czk': ?>
-        <?= $amount ?> Liber je <?= $amount * EUR_CZK ?> Kč.
-        <?php
+    case 'gbp_czk': 
+        $final = $amount * GBP_CZK ;
+        $curencyfrom = " GBP " ;
+        $curencyto = " CZK " ;
         break;
 
-    case 'czk_usd': ?>
-        <?= $amount ?> Kč je <?= $amount / USD_CZK ?> USD.
-        <?php
+    case 'czk_usd': 
+        $final = $amount / USD_CZK ;
+        $curencyfrom = " CZK " ;
+        $curencyto = " USD " ;
         break;
             
-    default: ?>
-        <?= $amount ?> Usd je <?= $amount * USD_CZK ?> Kč.
-        <?php
+    default: 
+        $final = $amount * USD_CZK ;
+        $curencyfrom = " USD " ;
+        $curencyto = " CZK " ;
         break;
                     }
+        $all =$text . $amount . $curencyfrom . " = " . $final . $curencyto ?>
+<?= $all ?>
+<?php
 } else { ?>
     <form action="index.php" method="post">
 Peníze: <input type="text" name="amount" id="amount"> <br>
