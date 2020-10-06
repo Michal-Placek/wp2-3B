@@ -10,7 +10,6 @@ $curencyfrom;
 $curencyto;
 $text = "Výpočet byl proveden " ;
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +18,6 @@ $text = "Výpočet byl proveden " ;
     <title>Document</title>
 </head>
 <body>
-
-
 <?php
 if (isset($sub)) {
 
@@ -67,16 +64,15 @@ if (isset($sub)) {
 } else { ?>
     <form action="index.php" method="post">
 Peníze: <input type="text" name="amount" id="amount"> <br>
-        CZK to EUR: <input type="radio" name="switch" value="czk_eur" id="switch"><br>
-        EUR to CZK: <input type="radio" name="switch" value="eur_czk" id="switch"><br>
-        CZK to GBP: <input type="radio" name="switch" value="czk_gbp" id="switch"><br>
-        GBP to CZK: <input type="radio" name="switch" value="gbp_czk" id="switch"><br>
-        CZK to USD: <input type="radio" name="switch" value="czk_usd" id="switch"><br>
-        USD to CZK: <input type="radio" name="switch" value="usd_czk" id="switch"><br>
+        CZK na EUR: <input type="radio" name="switch" value="czk_eur" id="switch"><br>
+        EUR na CZK: <input type="radio" name="switch" value="eur_czk" id="switch"><br>
+        CZK na GBP: <input type="radio" name="switch" value="czk_gbp" id="switch"><br>
+        GBP na CZK: <input type="radio" name="switch" value="gbp_czk" id="switch"><br>
+        CZK na USD: <input type="radio" name="switch" value="czk_usd" id="switch"><br>
+        USD na CZK: <input type="radio" name="switch" value="usd_czk" id="switch"><br>
         <input type="submit" value="odeslat" name="odeslat">
     </form>
 <?php
 } ?>
-
 </body>
 </html>
